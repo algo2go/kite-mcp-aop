@@ -3,6 +3,32 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/algo2go/kite-mcp-aop.svg)](https://pkg.go.dev/github.com/algo2go/kite-mcp-aop)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+> [!IMPORTANT]
+> **DEPRECATED — repository archived 2026-05-11.**
+>
+> This package was a research experiment exploring reflection-based
+> AOP for the audit + riskguard cross-cutting concerns. Empirical
+> analysis (`.research/research/dead-code-utilization-analysis-2026-05-11.md`
+> in `Sundeepg98/kite-mcp-server`) confirmed **zero external consumers**
+> across the entire algo2go ecosystem.
+>
+> **The production AOP path uses interface-typed middleware** via
+> `server.WithToolHandlerMiddleware` (mcp-go) — strictly faster (no
+> reflection dispatch), more Go-idiomatic, and type-safe. See the
+> wired chain in
+> [`algo2go/kite-mcp-bootstrap`](https://github.com/algo2go/kite-mcp-bootstrap)
+> at `app/providers/mcpserver.go::WithToolHandlerMiddleware` for the
+> canonical pattern.
+>
+> **Why kept (not git-rm'd)**: this repo retains historical value as
+> "tried-and-rejected" evidence. Future contributors asking "should we
+> try reflection-based AOP?" have a concrete reference for why the
+> answer is no.
+>
+> No new commits will land here. The package compiles + tests pass
+> under `-tags=research`; that state is preserved as the final
+> snapshot.
+
 Reflective Aspect-Oriented Programming (AOP) primitives for the
 algo2go ecosystem. Generates dynamic proxies that wrap target
 struct methods with cross-cutting aspects (audit, rate-limit,
